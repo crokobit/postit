@@ -5,6 +5,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 2.3.2.0'
+gem 'haml'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -21,6 +22,11 @@ group :development do
   gem 'quiet_assets'
   gem 'pry'
   gem 'sqlite3'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
 end
 
 group :production do
