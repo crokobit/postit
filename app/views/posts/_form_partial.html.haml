@@ -1,0 +1,6 @@
+.well
+  = bootstrap_form_for(@post) do |f|
+    = f.text_field :title
+    = f.text_field :url
+    = f.text_area :description, rows: 5
+    = f.submit "Create Post", class: "btn btn-primary"

@@ -22,5 +22,14 @@ module PostitTemplate
 
     # Tealeaf note: Bootstrap sass gem addition
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
+    config.generators do |generate|
+      generate.helper false
+      generate.decorator false
+      generate.assets false
+      generate.view_specs false
+      generate.helper_specs false
+      generate.controller_specs false
+    end
   end
 end

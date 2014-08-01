@@ -10,7 +10,9 @@
  *
  *= require_self
  *= require_tree .
+ *= require rails_bootstrap_forms
  */
+
 
  @import "bootstrap";
 
@@ -31,7 +33,7 @@ div.nav_item {
   float: left;
 }
 
-.label  {
+.label, .badge {
   a, a:hover, a:focus {
     color: #fff;
     text-decoration: none;
