@@ -5,7 +5,9 @@
 %hr
 %p= @post.description
 %hr
-= bootstrap_form_for([@comment]) do |f|
+= bootstrap_form_for([@post,@comment]) do |f|
   = hidden_field_tag :post_id, @post.id
   = f.text_area :body, rows: 3, class: "span4", label: "Leave a comment"
   = f.submit "Create Comment", class: "btn btn-primary"
+%p
+  = render @comments

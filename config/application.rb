@@ -31,5 +31,7 @@ module PostitTemplate
       generate.helper_specs false
       generate.controller_specs false
     end
+
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
