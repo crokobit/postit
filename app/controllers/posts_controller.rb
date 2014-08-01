@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :find_post, only: [:edit, :update, :show]
+
   def index
     @posts = PostDecorator.decorate_collection(Post.all)
   end
@@ -16,8 +18,28 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @post.update(post_params)
+      redirect_to posts_path
+    else
+      render :new
+    end
+  end
+
+  def show
+    @comment = Comment.new
+  end
+
+  private
+
+  def find_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
-    params.require(:post).permit(:url, :title, :description, :id)
+    params.require(:post).permit(:url, :title, :description)
   end
 end
