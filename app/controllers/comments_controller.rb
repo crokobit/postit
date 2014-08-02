@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       redirect_to post_path(@comment.post)
     else
       flash[:alert] = "fail"
-      render :back
+      redirect_to post_path(@post)
     end
   end
 
