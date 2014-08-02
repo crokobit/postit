@@ -1,0 +1,9 @@
+.span12
+  %p.lead Register
+  %hr
+  .well
+    = bootstrap_form_for(@user) do |f|
+      = f.text_field :name
+      = f.email_field :email
+      = f.password_field :password
+      = f.submit "Register", class: "btn btn-success"
