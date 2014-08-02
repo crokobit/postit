@@ -6,8 +6,9 @@ class CommentsController < ApplicationController
     if @comment.save
       #need refactor
       @comment.post = @post
-      @comment.creator = User.first
+      @comment.creator = current_user
       @comment.save
+
       flash[:notice] = "comment success"
       redirect_to post_path(@comment.post)
     else
