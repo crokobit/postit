@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit]
   def new
     @user = User.new
   end
@@ -12,6 +13,16 @@ class UsersController < ApplicationController
       flash[:error] = "register fail"
       render :new
     end
+  end
+
+  def edit; end
+
+  def show; end
+
+  private
+
+  def set_user
+    @user = current_user
   end
 
   def user_params

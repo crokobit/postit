@@ -1,0 +1,14 @@
+%p.lead= "Profile: #{@user.name}"
+%hr
+.well
+  %dl.dl-horizontal
+    %dt Username:
+    %dd= @user.name
+    %dt Useremail:
+    %dd= @user.email
+%h5 #{@user.name}'s Activity
+%ul.nav.nav-tabs
+  %li{ tab_active?(nil) }= link_to "Posts (#{@user.posts.count})", user_path(@user)
+  %li{ tab_active?("comments") }= link_to "Comments (#{@user.comments.count})", user_path(@user, tab: "comments")
+= render @user.posts.decorate unless params[:tab]
+= render @user.comments.decorate if params[:tab] == "comments"
