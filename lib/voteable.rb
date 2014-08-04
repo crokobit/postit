@@ -5,12 +5,12 @@ module Voteable
     
   end
 
-  def vote_up
-    self.votes.create(vote_value: true) 
+  def vote_up(creator)
+    self.votes.create(vote_value: true, creator: creator)
   end
 
-  def vote_down
-    self.votes.create(vote_value: false) 
+  def vote_down(creator)
+    self.votes.create(vote_value: false, creator: creator) 
   end
 
   def vote_count

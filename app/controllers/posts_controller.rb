@@ -37,12 +37,12 @@ class PostsController < ApplicationController
   end
 
   def vote_up
-    @post.vote_up
+    @post.vote_up(current_user)
     redirect_to :back
   end
 
   def vote_down
-    @post.vote_down  
+    @post.vote_down(current_user)
     redirect_to :back
   end
 
