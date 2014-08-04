@@ -1,6 +1,8 @@
-.span8.well
-  =render post.categories
-  %h4= link_to post.title, post.url
-  %p= post.description
-  %p= post.show_by_who_at_when
-  %p= post.link_to_post_with_comment_numbers
+.row
+  .span0.well.text-center
+  .span8.well
+    =render post.categories
+    %h4= link_to post.title, post.url
+    %p= post.description
+    %p= post.show_by_who_at_when
+    %p= post.link_to_post_with_comment_numbers

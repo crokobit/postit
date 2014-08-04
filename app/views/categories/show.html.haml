@@ -1,0 +1,8 @@
+.row
+  .span12
+    %p.lead
+      =capture_haml do
+        =link_to "All Posts", posts_path
+        =">> #{@category.name}"
+    %hr
+    = render @category.posts.decorate
