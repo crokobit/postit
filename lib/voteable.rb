@@ -14,6 +14,6 @@ module Voteable
   end
 
   def vote_count
-    Vote.where(vote_value: true).count - Vote.where(vote_value: false).count
+    self.votes.where(vote_value: true).count - self.votes.where(vote_value: false).count
   end
 end

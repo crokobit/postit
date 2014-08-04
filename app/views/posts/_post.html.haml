@@ -1,5 +1,12 @@
 .row
   .span0.well.text-center
+    = link_to vote_up_post_path(post) do
+      %i.icon-arrow-up
+    %br
+    #{post.vote_count} votes
+    %br
+    = link_to vote_down_post_path(post) do
+      %i.icon-arrow-down
   .span8.well
     =render post.categories
     %h4= link_to post.title, post.url

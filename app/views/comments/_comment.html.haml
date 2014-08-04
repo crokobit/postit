@@ -1,6 +1,12 @@
 .row
   .span0.well.text-center
-    =link_to 
+    = link_to vote_up_post_comment_path(comment.post, comment) do
+      %i.icon-arrow-up
+    %br
+    #{comment.vote_count} votes
+    %br
+    = link_to vote_down_post_comment_path(comment.post, comment) do
+      %i.icon-arrow-down
   .well.span8
     %em= '"' + "#{comment.body}" '"'
     %br

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:edit, :update, :show]
+  before_action :find_post, only: [:edit, :update, :show, :vote_up, :vote_down]
 
   def index
     @posts = PostDecorator.decorate_collection(Post.all)
@@ -34,6 +34,16 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = CommentDecorator.decorate_collection(@post.comments)
+  end
+
+  def vote_up
+    @post.vote_up
+    redirect_to :back
+  end
+
+  def vote_down
+    @post.vote_down  
+    redirect_to :back
   end
 
   private
