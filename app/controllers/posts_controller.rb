@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:edit, :update, :show, :vote_up, :vote_down]
+  before_action :require_same_user, only: [:edit, :update]
+  before_action :require_sign_in, except: [:index]
 
   def index
     @posts = PostDecorator.decorate_collection(Post.all)
@@ -57,5 +59,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:url, :title, :description)
+  end
+
+  def require_same_user
+    if  logged_in? && @post.creator.id != current_user.id
+      flash[:error] = "need be same user to do that"
+      redirect_to root_path
+    end
   end
 end

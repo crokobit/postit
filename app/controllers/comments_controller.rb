@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_comment
+  before_action :set_comment, only:[:vote_up, :vote_down]
+  before_action :require_sign_in, only: [:create, :vote_up ,:vote_down]
 
   def create
     @post = Post.find(params[:post_id])
@@ -14,7 +15,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "comment success"
       redirect_to post_path(@comment.post)
     else
-      flash[:alert] = "fail"
+      flash[:alert] = "fail! can not be blank!"
       redirect_to post_path(@post)
     end
   end
