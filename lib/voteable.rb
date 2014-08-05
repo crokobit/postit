@@ -2,7 +2,6 @@ module Voteable
   extend ActiveSupport::Concern
 
   included do
-    
   end
 
   def vote_up(creator)

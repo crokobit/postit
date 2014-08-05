@@ -11,10 +11,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.creator = current_user
+    @post.category_ids = params[:post][:category_ids]
     if @post.save
-      @post.creator = current_user
-      @post.save
-
       redirect_to posts_path
     else
       render :new
@@ -24,6 +23,8 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
+    @post.creator = current_user
+    @post.category_ids = params[:post][:category_ids]
     if @post.update(post_params)
       redirect_to posts_path
     else
@@ -37,12 +38,14 @@ class PostsController < ApplicationController
   end
 
   def vote_up
-    @post.vote_up(current_user)
+    vote = @post.vote_up(current_user)
+    flash[:alert] = "already voted" unless vote.valid?
     redirect_to :back
   end
 
   def vote_down
-    @post.vote_down(current_user)
+    vote = @post.vote_down(current_user)
+    flash[:alert] = "already voted" unless vote.valid?
     redirect_to :back
   end
 

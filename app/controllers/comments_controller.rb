@@ -20,12 +20,14 @@ class CommentsController < ApplicationController
   end
 
   def vote_up
-    @comment.vote_up(current_user)
+    vote = @comment.vote_up(current_user)
+    flash[:alert] = "already voted" unless vote.valid?
     redirect_to :back
   end
 
   def vote_down
-    @comment.vote_down(current_user) 
+    vote = @comment.vote_down(current_user) 
+    flash[:alert] = "already voted" unless vote.valid?
     redirect_to :back
   end
 
