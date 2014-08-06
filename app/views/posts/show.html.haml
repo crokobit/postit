@@ -1,4 +1,4 @@
-%p.pull-right= link_to "[edit this post]", edit_post_path
+%p.pull-right= link_to "[edit this post]", edit_post_path if @post.creator == current_user
 %p
   = render @post.categories
 %p.lead= @post.title
