@@ -21,15 +21,29 @@ class CommentsController < ApplicationController
   end
 
   def vote_up
-    vote = @comment.vote_up(current_user)
-    flash[:alert] = "already voted" unless vote.valid?
-    redirect_to :back
+    @vote = @comment.vote_up(current_user)
+    respond_to do |format|
+      format.html do
+        flash[:alert] = "already voted" unless @vote.valid?
+        redirect_to :back
+      end
+      format.js do
+        render 'vote.js.erb'
+      end
+    end
   end
 
   def vote_down
-    vote = @comment.vote_down(current_user) 
-    flash[:alert] = "already voted" unless vote.valid?
-    redirect_to :back
+    @vote = @comment.vote_down(current_user) 
+    respond_to do |format|
+      format.html do
+        flash[:alert] = "already voted" unless vote.valid?
+        redirect_to :back
+      end
+      format.js do
+        render 'vote.js.erb'
+      end
+    end
   end
 
 

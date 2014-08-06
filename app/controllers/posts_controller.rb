@@ -40,15 +40,29 @@ class PostsController < ApplicationController
   end
 
   def vote_up
-    vote = @post.vote_up(current_user)
-    flash[:alert] = "already voted" unless vote.valid?
-    redirect_to :back
+    @vote = @post.vote_up(current_user)
+    respond_to do |format|
+      format.html do
+        flash[:alert] = "already voted" unless vote.valid?
+        redirect_to :back
+      end
+      format.js do
+        render 'vote.js.erb'
+      end
+    end
   end
 
   def vote_down
-    vote = @post.vote_down(current_user)
-    flash[:alert] = "already voted" unless vote.valid?
-    redirect_to :back
+    @vote = @post.vote_down(current_user)
+    respond_to do |format|
+      format.html do
+        flash[:alert] = "already voted" unless vote.valid?
+        redirect_to :back
+      end
+      format.js do
+        render 'vote.js.erb'
+      end
+    end
   end
 
   private
