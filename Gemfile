@@ -10,6 +10,8 @@ gem 'rake'
 gem 'bootstrap_form'
 gem 'draper'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'paratrooper'
+gem 'figaro'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
