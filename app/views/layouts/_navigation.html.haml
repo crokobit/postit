@@ -2,8 +2,11 @@
 %ul.nav
   %li
     =link_to "Postit!", root_path, class: 'brand'
-.nav_item
-  =link_to "Log in", login_path, class: 'btn btn-small' unless current_user
+-unless current_user
+  .nav_item
+    =link_to "Log in", login_path, class: 'btn btn-small' 
+  .nav_item
+    =link_to "Register", register_path, class: 'btn btn-small btn-success' 
 -if current_user
   .nav_item.btn-group
     %a.btn.btn-small.dropdown-toggle{ data: {toggle: "dropdown"}}
