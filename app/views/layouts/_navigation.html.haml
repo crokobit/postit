@@ -16,7 +16,13 @@
     %ul.dropdown-menu
       -Category.all.each do |category|
         %li= link_to category.name, category_path(category)
-      %li= link_to "create category", new_admin_category_path
+      - if current_user.admin
+        %li.divider
+          %li
+            = link_to new_admin_category_path do
+              = capture_haml do
+                %i.icon-plus
+                create category
   .nav_item
     =link_to "New Post", new_post_path, class: "btn btn-success btn-small"
   .nav_item.btn-group
