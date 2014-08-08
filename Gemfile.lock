@@ -54,6 +54,9 @@ GEM
     erubis (2.7.0)
     excon (0.39.3)
     execjs (2.2.1)
+    fabrication (2.11.3)
+    faker (1.4.2)
+      i18n (~> 0.5)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -182,6 +185,8 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   draper
+  fabrication
+  faker
   figaro
   haml
   jbuilder (~> 1.2)
