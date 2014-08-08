@@ -1,6 +1,10 @@
 PostitTemplate::Application.routes.draw do
   root to: 'posts#index'
 
+  namespace :admin do
+    resources :categories, only: [:new, :create]
+  end
+
   resources :posts do
     resources :comments, only: [:new, :create] do
       member do
@@ -14,7 +18,7 @@ PostitTemplate::Application.routes.draw do
     end
   end
   resources :users
-  resources :categories
+  resources :categories, only: [:show]
 
   resources :sessions, only: [:new, :create, :destroy]
   get '/login', to: 'sessions#new'
