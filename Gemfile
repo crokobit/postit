@@ -14,6 +14,7 @@ gem 'paratrooper'
 gem 'figaro'
 gem 'fabrication'
 gem 'faker'
+gem 'launchy'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
