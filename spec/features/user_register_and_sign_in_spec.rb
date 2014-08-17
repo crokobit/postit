@@ -2,23 +2,17 @@ require 'spec_helper'
 
 feature "user register and sign in" do
   scenario "register and sign in" do
+    user_data = Fabricate.build(:user)
+
     visit '/' 
     click_link "Register"
-    user = Fabricate(:user)
 
-    fill_in 'Name', with: user.name
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in_user_data(user_data)
     find('#register_submit').click
 
-    click_link "Log in"
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    find("#log_in_button").click
+    user_sign_in(user_data)
 
-    expect(page).to have_content user.name
-    expect(page) to have_content "Log In Success"
-
-    save_and_open_page
+    expect(page).to have_content user_data.name
+    expect(page).to have_content "Log In Success"
   end
 end
