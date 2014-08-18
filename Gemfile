@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'rails', '4.0.0'
 gem 'sass-rails', '~> 4.0.0'
@@ -34,9 +35,11 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.14.2'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'rspec-console', '~> 0.2.7'
+  gem 'pry-rails'
 end
 
 group :production do
