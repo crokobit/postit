@@ -13,16 +13,6 @@ feature "vote", { js: true }do
       expect(page).to have_content "1 votes"
       expect(message).to eq "voted successfully"
     end
-
-    within("div#post_1") do
-      binding.pry
-      message = accept_alert do
-        find(".icon-arrow-up").click
-      end
-      expect(message).to eq "voted successfully"
-      expect(page).to have_content "1 votes"
-    end
-
   end
 
   scenario "post voted already" do
@@ -40,4 +30,15 @@ feature "vote", { js: true }do
       expect(page).to have_content "1 votes"
     end
   end
+
+  scenario "need sign in to vote post" do
+    Fabricate(:post)
+    
+    visit '/'
+    within("div#post_1") do
+      find(".icon-arrow-up").click
+      expect(page).to have_content "0 votes"
+    end
+  end
+
 end
