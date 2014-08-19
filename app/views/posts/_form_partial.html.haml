@@ -5,4 +5,4 @@
     = f.text_area :description, rows: 5
     = f.collection_check_boxes(:category_ids, Category.all, :id, :name, label: "Categories") do |b|
       =b.label { b.check_box }
-    = f.submit "Create Post", class: "btn btn-primary"
+    = f.submit (@post.new_record? ? "Create Post" : "Edit Post"), class: "btn btn-primary"

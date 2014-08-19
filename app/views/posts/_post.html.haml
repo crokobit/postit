@@ -1,15 +1,16 @@
-.row
-  .span0.well.text-center
-    = link_to vote_up_post_path(post), remote: true do
-      %i.icon-arrow-up
-    %br
-    %span{id: "vote_count_#{post.id}"}#{post.vote_count} votes
-    %br
-    = link_to vote_down_post_path(post), remote: true do
-      %i.icon-arrow-down
-  .span8.well
-    =render post.categories
-    %h4= link_to post.title, post.url
-    %p= post.description
-    %p= post.show_by_who_at_when
-    %p= post.link_to_post_with_comment_numbers
+%div{id: "post_#{post.id}"}
+  .row
+    .span0.well.text-center
+      = link_to vote_up_post_path(post), remote: true do
+        %i.icon-arrow-up
+      %br
+      %span{id: "vote_count_#{post.id}"}#{post.vote_count} votes
+      %br
+      = link_to vote_down_post_path(post), remote: true do
+        %i.icon-arrow-down
+    .span8.well
+      =render post.categories
+      %h4= link_to post.title, post.url
+      %p= post.description
+      %p= post.show_by_who_at_when
+      %p= post.link_to_post_with_comment_numbers
