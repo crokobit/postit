@@ -41,6 +41,8 @@ group :development, :test do
   gem 'rspec-console', '~> 0.2.7'
   gem 'pry-rails'
   gem 'pry'
+  gem 'selenium-webdriver'
+  gem 'capybara-webkit'
 end
 
 group :production do
