@@ -15,7 +15,7 @@ end
 
 def click_post_comments(id)
   within("div#post_#{id}") do
-    find_link("comments").click 
+    find_link("comment").click 
   end
 end
 
